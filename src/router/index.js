@@ -1,14 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
-const Home = () => import ("@/views/HomeView.vue")
-const About = () => import ("@/views/AboutView.vue")
-const Manage = () => import ("@/views/ManageView.vue")
-const Song = () => import ("@/views/SongView.vue")
-const useUserStore = () => import ("@/stores/user")
-
-
-
+import Home from '@/views/HomeView.vue'
+import About from '@/views/AboutView.vue'
+import Manage from '@/views/ManageView.vue'
+import Song from '@/views/SongView.vue'
+import useUserStore from '@/stores/user'
 const routes = [
   {
     name: 'home',
@@ -47,18 +43,32 @@ const router = createRouter({
   linkExactActiveClass: 'text-yellow-500'
 })
 
+// router.beforeEach((to, from, next) => {
+//   console.log(to.meta)
+//   if (!to.meta.requiresAuth) {
+//     next()
+//     return;
+//   }
+//   const store = useUserStore()
+//   if (store.userLoggedIn) {
+//     next();
+//   } else {
+//     next({name:'home'})
+//   }
+// })
 router.beforeEach((to, from, next) => {
-  console.log(to.meta)
-  if (!to.meta.requiresAuth) {
-    next()
+  // console.log(to.matched);
+
+  if (!to.matched.some((record) => record.meta.requiresAuth)) {
+    next();
     return;
   }
   const store = useUserStore()
   if (store.userLoggedIn) {
     next();
   } else {
-    next({name:'home'})
+    next({ name: 'home' });
   }
-})
+});
 
 export default router
