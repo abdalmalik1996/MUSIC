@@ -9,25 +9,25 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      registerType:'autoUpdate',
-      devOptions:{
-        enabled:true
+      registerType: 'autoUpdate',
+      devOptions: {
+        enabled: true
       },
-      manifest:{
-        name:"Music App",
-        theme_color:'#ff5e3a',
-        icons:[
+      manifest: {
+        name: 'Music App',
+        theme_color: '#ff5e3a',
+        icons: [
           {
-            src:"assets/img/pwa-192x192.png",
-            sizes:'192x192',
-            type:'image/png'
+            src: 'assets/img/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
           }
         ]
       },
-      workbox:{
-        globPatterns:["**/*.{js,css,html,png,jpg,}"]
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,png,jpg,}']
       }
-    }),
+    })
     // visualizer({open: true})
   ],
   resolve: {
