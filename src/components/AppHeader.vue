@@ -2,7 +2,6 @@
   <!-- Header -->
   <header id="header" class="bg-gray-700">
     <nav class="container mx-auto flex justify-start items-center py-5 px-4">
-      
       <!-- App Name -->
       <router-link
         :to="{ name: 'home' }"
@@ -14,9 +13,7 @@
         <!-- Primary Navigation -->
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
-          <li>
-            <router-link class="px-2 text-white" :to="{ name: 'about' }">About</router-link>
-          </li>
+
           <li v-if="!userStore.userLoggedIn">
             <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal"
               >Login / Register</a
@@ -35,14 +32,11 @@
         <ul class="ml-auto">
           <li>
             <a href="#" class="px-2 text-white" @click.prevent="changeLocale">
-            {{ currentLocale }}</a>
+              {{ currentLocale }}</a
+            >
           </li>
-          
         </ul>
-        
       </div>
-      <div class="ml-9" :class="{'text-green-400': online, 'text-red-400': !online}">{{ online ? 'onLine' : 'offLine' }}</div>
-      
     </nav>
   </header>
 </template>
@@ -56,11 +50,8 @@ export default {
   name: 'AppHeader',
   computed: {
     ...mapStores(useModalStore, useUserStore),
-    currentLocale(){
-      return  this.$i18n.locale === "ar" ? "Arabic" : "English"
-    },
-    online() {
-      return navigator.onLine;
+    currentLocale() {
+      return this.$i18n.locale === 'ar' ? 'Arabic' : 'English'
     }
   },
   methods: {
@@ -75,7 +66,7 @@ export default {
       }
     },
     changeLocale() {
-      this.$i18n.locale = this.$i18n.locale === "ar" ? "en" : "ar"
+      this.$i18n.locale = this.$i18n.locale === 'ar' ? 'en' : 'ar'
     }
   }
 }

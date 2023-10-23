@@ -11,6 +11,8 @@ import i18n from './includes/i18n'
 import Icon from './directives/icon'
 import { registerSW } from 'virtual:pwa-register'
 
+
+
 import progressBar from './includes/progressBar'
 
 registerSW({immediate:true});
