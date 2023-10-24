@@ -11,13 +11,11 @@ import i18n from './includes/i18n'
 import Icon from './directives/icon'
 import { registerSW } from 'virtual:pwa-register'
 
-
-
 import progressBar from './includes/progressBar'
 
-registerSW({immediate:true});
+registerSW({ immediate: true })
 
-progressBar(router);
+progressBar(router)
 let app
 auth.onAuthStateChanged(() => {
   if (!app) {
@@ -27,7 +25,7 @@ auth.onAuthStateChanged(() => {
     app.use(router)
     app.use(veeValidatePlugin)
     app.use(i18n)
-    app.directive('icon',Icon)
+    app.directive('icon', Icon)
     app.mount('#app')
   }
 })
